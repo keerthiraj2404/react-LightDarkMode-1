@@ -3,7 +3,7 @@ import {Component} from 'react'
 import './index.css'
 
 class LightDarkMode extends Component {
-  state = {isDarkMode: false}
+  state = {isDarkMode: true}
 
   onChangeMode = () => {
     const {isDarkMode} = this.state
@@ -17,17 +17,38 @@ class LightDarkMode extends Component {
 
   render() {
     const {isDarkMode} = this.state
-    const buttonText = isDarkMode ? 'Light Mode' : 'Dark Mode'
+
     const modeContainer = isDarkMode ? 'dark-mode' : 'light-mode'
-    const heading = isDarkMode ? 'dark-mode-heading' : 'light-mode-heading'
 
     return (
       <div className="main-container">
         <div className={modeContainer}>
-          <h1 className={heading}>Click To Change Mode</h1>
-          <button className="button" type="button" onClick={this.onChangeMode}>
-            {buttonText}
-          </button>
+          <div>
+            {isDarkMode ? (
+              <h1 className="dark-mode-heading">Click To Change Mode</h1>
+            ) : (
+              <h1 className="light-mode-heading">Click To Change Mode</h1>
+            )}
+          </div>
+          <div>
+            {isDarkMode ? (
+              <button
+                className="button"
+                type="button"
+                onClick={this.onChangeMode}
+              >
+                Light Mode
+              </button>
+            ) : (
+              <button
+                className="button"
+                type="button"
+                onClick={this.onChangeMode}
+              >
+                Dark Mode
+              </button>
+            )}
+          </div>
         </div>
       </div>
     )
